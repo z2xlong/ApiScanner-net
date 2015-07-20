@@ -1,0 +1,5 @@
+/Users/zzx/Projects/GitHub/ApiScanner-net/src/DummyAssembly/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/zzx/Projects/GitHub/ApiScanner-net/src/DummyAssembly/bin/Debug/DummyAssembly.dll.mdb
+/Users/zzx/Projects/GitHub/ApiScanner-net/src/DummyAssembly/bin/Debug/DummyAssembly.dll
+/Users/zzx/Projects/GitHub/ApiScanner-net/src/DummyAssembly/obj/Debug/DummyAssembly.dll
+/Users/zzx/Projects/GitHub/ApiScanner-net/src/DummyAssembly/obj/Debug/DummyAssembly.dll.mdb
