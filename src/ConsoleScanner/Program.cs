@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Diagnostics;
-using ApiCore;
+using ApiScanner.Core;
 
 namespace ConsoleScanner
 {
@@ -12,11 +12,11 @@ namespace ConsoleScanner
         static int Main(string[] args)
         {
 #if DEBUG
-            args = new string[4];
+            args = new string[2];
             args[0] = "-a";
-            args[1] = @"Y:\Career\Ctrip2014\Project\ApiScannerTemp\DummyAssembly1\DummyAssembly.dll";
-            args[2] = "-n";
-            args[3] = @"Y:\Career\Ctrip2014\Project\ApiScannerTemp\DummyAssembly2\DummyAssembly.dll";
+            args[1] = @"Y:\Career\Ctrip2014\Project\ApiScannerTemp\DummyAssembly1\Arch.CFX.dll";
+            //args[2] = "-n";
+            //args[3] = @"Y:\Career\Ctrip2014\Project\ApiScannerTemp\DummyAssembly2\Arch.CFX.dll";
 #endif
             if (!TryReadArgs(args))
             {
@@ -27,23 +27,23 @@ namespace ConsoleScanner
             }
 
             int result = 0;
-            AssemblySketch assembly = Scanner.Traverse(_path);
+            AssemblyApi assembly = Scanner.Traverse(_path);
             if (!string.IsNullOrWhiteSpace(_newVersion))
             {
-                AssemblySketch newAssembly = Scanner.Traverse(_newVersion);
+                AssemblyApi newAssembly = Scanner.Traverse(_newVersion);
                 var incoms = Scanner.CompareApi(assembly, newAssembly);
                 if (incoms != null)
                 {
+                    Console.WriteLine("Incompatible API as follows:");
                     foreach (string incom in incoms)
                         Console.WriteLine(incom);
                     result = -1;
                 }
+                else
+                    Console.WriteLine("Assemblies are compatible.");
             }
             else
                 PrintApi(assembly);
-
-            if (result == 0)
-                Console.WriteLine("Assemblies are compatible.");
 
 #if DEBUG
             Console.ReadLine();
@@ -51,7 +51,7 @@ namespace ConsoleScanner
             return result;
         }
 
-        static void PrintApi(AssemblySketch assembly)
+        static void PrintApi(AssemblyApi assembly)
         {
             Console.WriteLine(assembly.ToString());
 
@@ -65,7 +65,7 @@ namespace ConsoleScanner
                 Console.WriteLine("\tBase Classes:");
                 foreach (var parent in type.Parents)
                     Console.WriteLine("\t\t{0}", parent);
-                foreach (var api in type.Apis)
+                foreach (var api in type.Members)
                     Console.WriteLine("\t{0}", api.Signature);
             }
         }

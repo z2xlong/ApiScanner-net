@@ -1,7 +1,11 @@
-﻿namespace DummyAssembly
+﻿using System;
+
+namespace DummyAssembly
 {
-    public interface Interface1<T>
+    public interface Interface1<M> where M : class
     {
-        void Execute(T obj);
+        void Execute(M obj);
+
+        void DoSomething();
     }
 }

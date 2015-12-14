@@ -1,8 +1,10 @@
-﻿namespace DummyAssembly
+﻿using System;
+
+namespace DummyAssembly
 {
     public class Parent
     {
-        protected int Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
@@ -10,7 +12,12 @@
 
         public virtual string GetContactInfo()
         {
-            return this.Mobile;
+            return "Parent's Contact info.";
+        }
+
+        public void Do()
+        {
+            return;
         }
     }
 }

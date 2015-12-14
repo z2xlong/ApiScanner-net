@@ -1,0 +1,12 @@
+src/.vs
+src/ApiCore/bin
+src/ApiCore/obj
+src/ApiScanner.Core.Test/bin
+src/ApiScanner.Core.Test/obj
+src/ConsoleScanner/bin
+src/ConsoleScanner/obj
+src/DummyApp/bin
+src/DummyApp/obj
+src/DummyAssembly/obj
+src/packages
+src/DummyAssembly/bin

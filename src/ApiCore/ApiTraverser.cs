@@ -5,14 +5,14 @@ using Microsoft.Cci.Contracts;
 using Microsoft.Cci.MutableContracts;
 using System.Diagnostics;
 
-namespace ApiCore
+namespace ApiScanner.Core
 {
     public sealed class ApiTraverser : MetadataTraverser
     {
         readonly IMetadataReaderHost _host;
-        readonly AssemblySketch _assembly;
+        readonly AssemblyApi _assembly;
 
-        public AssemblySketch Assembly
+        public AssemblyApi Assembly
         {
             get { return _assembly; }
         }
@@ -23,7 +23,7 @@ namespace ApiCore
                 throw new ArgumentNullException("ContractAwareHost arg should not be null.");
 
             _host = host;
-            _assembly = new AssemblySketch(assembly);
+            _assembly = new AssemblyApi(assembly);
         }
 
         #region Traverserse

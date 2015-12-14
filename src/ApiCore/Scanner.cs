@@ -3,11 +3,11 @@ using Microsoft.Cci.MutableContracts;
 using System;
 using System.Collections.Generic;
 
-namespace ApiCore
+namespace ApiScanner.Core
 {
     public class Scanner
     {
-        public static AssemblySketch Traverse(string path)
+        public static AssemblyApi Traverse(string path)
         {
             if (string.IsNullOrWhiteSpace(path))
                 throw new ArgumentException("Assembly Path should not be empty.");
@@ -26,10 +26,10 @@ namespace ApiCore
             }
         }
 
-        public static IEnumerable<string> CompareApi(AssemblySketch oldVersion, AssemblySketch newVersion)
+        public static IEnumerable<string> CompareApi(AssemblyApi oldVersion, AssemblyApi newVersion)
         {
             List<string> incompatibility = new List<string>();
-            if (newVersion.IsCompatible(oldVersion, incompatibility))
+            if (newVersion.IsCompatible(oldVersion) >= 0)
                 return null;
             else
                 return incompatibility;
