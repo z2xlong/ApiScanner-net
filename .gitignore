@@ -7,6 +7,8 @@ src/ConsoleScanner/bin
 src/ConsoleScanner/obj
 src/DummyApp/bin
 src/DummyApp/obj
+src/DummyApp/obj/*
 src/DummyAssembly/obj
+src/DummyAssembly/obj/*
 src/packages
 src/DummyAssembly/bin
